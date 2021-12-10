@@ -1,0 +1,16 @@
+!--Load file
+use 60km_idai_ERA5_mesoscale_large.nc
+
+!--Calculate wind
+let wind = ((u^2)+(v^2))^0.5
+
+!--Create plot
+!----Here, I looked at the TC track and found the timestep of maximum intensity (l=10)
+!----I then plotted for 5 degrees either side of the longitude (longitude was 39.65E)
+!----For the latitude we just plot at the exact point (latitude is 19.73S)
+!----For the levels (levels=(0,44,4)), this just means make the scale from 0-44 in steps of 4.
+
+fill/levels=(0,44,4) wind[x=34.65E:44.65E,y=19.73S,l=10]
+
+!--Save plot
+frame/file=vertical_structure_idai.gif
